@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/file_upload
+    username: aman
+    password: 123456
+    driver-class-name: org.postgresql.Driver   # optional, Spring Boot usually auto-detects
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+batch:
+  jdbc:
+    initialize-schema: always   # corrected typo: 'inilize-schema' → 'initialize-schema'
+  job:
+    enabled: false
+
+server:
+  port: 9090
