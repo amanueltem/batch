@@ -52,7 +52,7 @@ public class BatchConfig {
 	@Bean
 	public Step importStep() {
 		return new StepBuilder("csvImport",jobRepository)
-				   .<Student,Student>chunk(100000,platformTransactionManager)
+				   .<Student,Student>chunk(10,platformTransactionManager)
 				   .reader(itemReader())
 				   .processor(processor())
 				   .writer(writer())
@@ -70,7 +70,7 @@ public class BatchConfig {
 		DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
 		lineTokenizer.setDelimiter(",");
 		lineTokenizer.setStrict(false);
-		lineTokenizer.setNames("id", "firstname", "lastname", "age");
+		lineTokenizer.setNames("id","firstname", "lastname", "age");
 
 		BeanWrapperFieldSetMapper<Student> fieldSetMapper = new BeanWrapperFieldSetMapper<Student>();
 
